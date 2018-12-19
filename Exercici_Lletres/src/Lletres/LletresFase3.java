@@ -28,7 +28,8 @@ public class LletresFase3 {
 		Map<Character, Integer> characterMap = new HashMap<>();
 		for(int i = 0; i < word.size(); i++) {
 			if (characterMap.containsKey(Character.toUpperCase(word.get(i)))){
-				characterMap.put(Character.toUpperCase(word.get(i)), characterMap.get(Character.toUpperCase(word.get(i)))+1);
+				characterMap.put(Character.toUpperCase(word.get(i)), 
+						characterMap.get(Character.toUpperCase(word.get(i)))+1);
 			}else {
 				characterMap.put(Character.toUpperCase(word.get(i)), 1);
 			}
