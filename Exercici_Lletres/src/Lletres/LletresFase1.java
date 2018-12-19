@@ -5,17 +5,17 @@ public class LletresFase1 {
 
 	public static void main(String[] args) {
 		System.out.println("Les lletres del teu nom, en format vertical, són: ");
-		printLletresCharV(name);
+		printCharactersV(name);
 		System.out.println("Les lletres del teu nom, en format horitzontal, són: ");
-		printLletresCharH(name);
+		printCharactersH(name);
 	}
-	public static void printLletresCharV(char[] word) {
+	public static void printCharactersV(char[] word) {
 		for(char c: word) {
 			System.out.println(c);
 		}
 		System.out.println();
 	}
-	public static void printLletresCharH(char[] word) {
+	public static void printCharactersH(char[] word) {
 		for(int i = 0; i < word.length - 1; i++) {
 			System.out.printf("\'%c\', ", word[i]);
 		}
