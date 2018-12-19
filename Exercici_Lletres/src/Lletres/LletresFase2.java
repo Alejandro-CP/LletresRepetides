@@ -2,41 +2,43 @@ package Lletres;
 import java.util.*;
 
 public class LletresFase2 {
-	static ArrayList<Character> nameList = new ArrayList<>(Arrays.asList('A', 'l', 'e', 'j', 'a', 'n', 'd', 'r', 'o'));
-
+	static List<Character> nameList;
+	
 	public static void main(String[] args) {
-		printLletresLlista(nameList);
+		nameList = initName();
+		printCharacterList(nameList);
 	}
-	public static boolean teNumero(ArrayList<Character> word) {
-		boolean digit = false;
+	public static List<Character> initName() {
+		return new ArrayList<>(Arrays.asList('A', 'l', 'e', 'j', 'a', 'n', 'd', 'r', 'o'));
+	}
+	public static boolean hasNumber(List<Character> word) {
 		for(int i = 0; i < word.size(); i++) {
 			if(Character.isDigit(word.get(i))) {
-				digit = true;
-				break;
+				return true;
 			}
 		}
-		return digit;
+		return false;
 	}
-	public static void printLletresLlista(ArrayList<Character> word) {
-		if(teNumero(word)) {
+	public static void printCharacterList(List<Character> word) {
+		if(hasNumber(word)) {
 			System.out.println("Els noms de persones no contenen números!");
-		}else if(!totLletres(word)) {
+		}else if(!allCharacters(word)) {
 			System.out.println("Els noms de persones només contenen lletres!");
 		}else{
-			printCapcelera();
-			printLletraTipus(word);
+			printHeader();
+			printCharacterType(word);
 		}
 	}
-	public static void printCapcelera() {
+	public static void printHeader() {
 		System.out.printf("Lletra\tTipus\n");
 		System.out.printf("------\t-----\n");
 	}
-	public static void printLletraTipus(ArrayList<Character> word){
+	public static void printCharacterType(List<Character> word){
 		for(int i = 0; i < word.size(); i++) {
-			System.out.printf("%c\t%s\n", word.get(i), miraTipusLletra(word.get(i)));
+			System.out.printf("%c\t%s\n", word.get(i), lookCharacterType(word.get(i)));
 		}
 	}
-	public static String miraTipusLletra(char c) {
+	public static String lookCharacterType(char c) {
 		c = Character.toLowerCase(c);
 		if((c == 'a')||(c == 'e')||(c == 'i')||(c == 'o')||(c == 'u')) {
 			return "VOCAL";
@@ -44,15 +46,13 @@ public class LletresFase2 {
 			return "CONSONANT";
 		}
 	}
-	public static boolean totLletres(ArrayList<Character> word) {
-		boolean nomesLletres = true;
+	public static boolean allCharacters(List<Character> word) {
 		for(int i = 0; i < word.size(); i++) {
 			if(!Character.isLetter(word.get(i))) {
-				nomesLletres = false;
-				break;
+				return false;
 			}
 		}
-		return nomesLletres;
+		return true;
 	}
 
 }
